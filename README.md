@@ -5,8 +5,7 @@ Este es el sitio web oficial de **BIDAYA STEAK HOUSE**, desarrollado como parte 
 ---
 
 ## 🌐 URL pública
-👉 [https://github.com/luisandriuarancibia/bidaya-steakhouse](https://github.com/luisandriuarancibia/bidaya-steakhouse)
-
+👉 https://luisandriuarancibia-ui.github.io/Pagina-BIDAYA/
 ---
 
 ## 📦 Contenido del sitio
