@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIDAYA STEAK HOUSE 🥩</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Cormorant+Garamond:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <h1 class="logo">BIDAYA STEAK HOUSE</h1>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#menu">Menú</a></li>
+                <li><a href="#promos">Promociones</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li>
+                    <button class="btn-carrito" onclick="toggleCarrito()">
+                        🛒 Carrito <span id="contador-carrito" class="contador">0</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Panel del Carrito -->
+    <div id="panel-carrito" class="panel-carrito">
+        <div class="carrito-header">
+            <h2>🛒 Mi Carrito</h2>
+            <button class="btn-cerrar" onclick="toggleCarrito()">✕</button>
+        </div>
+        <div id="items-carrito" class="items-carrito">
+            <p class="carrito-vacio">Tu carrito está vacío</p>
+        </div>
+        <div class="carrito-footer">
+            <div class="total-carrito">
+                <span>Total:</span>
+                <span id="total-precio">Bs. 0</span>
+            </div>
+            <button class="btn-finalizar" onclick="finalizarPedido()">Finalizar Pedido por WhatsApp</button>
+            <button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar Carrito</button>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay" onclick="toggleCarrito()"></div>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <h1>BIDAYA STEAK HOUSE</h1>
+        <p>Los mejores cortes de carne premium en Santa Cruz. Experiencia gastronómica única.</p>
+        <a href="#menu" class="btn-primary">Ver Menú</a>
+    </section>
+
+    <!-- Menú -->
+    <section id="menu" class="menu-section">
+        <h2>🥩 Cortes de Carne Premium</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="img/bone strek.jpg" alt="" style="display: flex; align-items: center; justify-content: center; font-size: 5rem;">
+                <h3>T-Bone Steak</h3>
+                <p>Corte premium jugoso al grill con el equilibrio perfecto entre solomillo y entrecot.</p>
+                <span class="precio">Bs. 60</span>
+                <button onclick="agregarAlCarrito('T-Bone Steak', 60)">Agregar al Carrito</button>
+            </div>
+
+            <div class="menu-item">
+                <img src="img/Vacío Argentino.jpg" alt="" style="display: flex; align-items: center; justify-content: center; font-size: 5rem;">
+                <h3>Vacío Argentino</h3>
+                <p>Asado tradicional, corte tierno y sabroso directo de las pampas.</p>
+                <span class="precio">Bs. 55</span>
+                <button onclick="agregarAlCarrito('Vacío Argentino', 55)">Agregar al Carrito</button>
+            </div>
+
+            <div class="menu-item">
+                <img src="img/Rib Eye Premium.jpg" alt="" style="display: flex; align-items: center; justify-content: center; font-size: 5rem;">
+                <h3>Rib Eye Premium</h3>
+                <p>El rey de los cortes, con vetas de grasa que garantizan jugosidad excepcional.</p>
+                <span class="precio">Bs. 70</span>
+                <button onclick="agregarAlCarrito('Rib Eye Premium', 70)">Agregar al Carrito</button>
+            </div>
+
+            <div class="menu-item">
+                <img src="img/Asado de Tira.jpg" alt="" style="display: flex; align-items: center; justify-content: center; font-size: 5rem;">
+                <h3>Asado de Tira</h3>
+                <p>Corte clásico argentino con hueso, lleno de sabor y ternura.</p>
+                <span class="precio">Bs. 50</span>
+                <button onclick="agregarAlCarrito('Asado de Tira', 50)">Agregar al Carrito</button>
+            </div>
+        </div>
+
+        <h2>🍔 Hamburguesas Artesanales</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="img/Hamburguesa Bidaya.jpg" alt="" style="display: flex; align-items: center; justify-content: center; font-size: 5rem;">
+                <h3>Hamburguesa Bidaya</h3>
+                <p>200g de carne angus, queso cheddar, panceta ahumada y nuestra salsa secreta.</p>
+                <span class="precio">Bs. 45</span>
+                <button onclick="agregarAlCarrito('Hamburguesa Bidaya', 45)">Agregar al Carrito</button>
+            </div>
+
+            <div class="menu-item">
+                <img src="img/Burger BBQ.jpg" alt="" style="display: flex; align-items: center; justify-content: center; font-size: 5rem;">
+                <h3>Burger BBQ</h3>
+                <p>Carne angus con aros de cebolla, queso y salsa barbecue casera.</p>
+                <span class="precio">Bs. 42</span>
+                <button onclick="agregarAlCarrito('Burger BBQ', 42)">Agregar al Carrito</button>
+            </div>
+
+            <div class="menu-item">
+                <img src="img/Doble Cheddar.jpg" alt="" style="display: flex; align-items: center; justify-content: center; font-size: 5rem;">
+                <h3>Doble Cheddar</h3>
+                <p>Dos medallones de 150g con doble queso cheddar fundido.</p>
+                <span class="precio">Bs. 52</span>
+                <button onclick="agregarAlCarrito('Doble Cheddar', 52)">Agregar al Carrito</button>
+            </div>
+        </div>
+
+        <h2>🍟 Acompañamientos</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="img/Papas Rústicas.jpg" alt="" style="display: flex; align-items: center; justify-content: center; font-size: 5rem;">
+                <h3>Papas Rústicas</h3>
+                <p>Papas fritas artesanales con piel, especias y sal marina.</p>
+                <span class="precio">Bs. 18</span>
+                <button onclick="agregarAlCarrito('Papas Rústicas', 18)">Agregar al Carrito</button>
+            </div>
+
+            <div class="menu-item">
+                <img src="img/Ensalada Caesar.jpg" alt="" style="display: flex; align-items: center; justify-content: center; font-size: 5rem;">
+                <h3>Ensalada Caesar</h3>
+                <p>Lechuga romana, pollo grillado, crutones y aderezo caesar.</p>
+                <span class="precio">Bs. 28</span>
+                <button onclick="agregarAlCarrito('Ensalada Caesar', 28)">Agregar al Carrito</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promociones -->
+    <section id="promos" class="promo-section">
+        <h2>🔥 Promociones del Día</h2>
+        <div class="promo-item">
+            <h3>🍖 Combo Parrillero</h3>
+            <p>2 cortes premium + bebida grande + papas rústicas por solo <strong>Bs. 90</strong></p>
+            <button class="btn-primary" onclick="agregarAlCarrito('Combo Parrillero', 90)">Agregar al Carrito</button>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contacto-section">
+        <h2>📍 Contáctanos</h2>
+        <p>📞 <strong>69630059</strong></p>
+        <p>📍 Barrio Equipetrol, Av. San Martín y Calle Alejandro Ramírez</p>
+        <p>🕐 Lunes a Domingo: 11:00 AM - 11:00 PM</p>
+        <a class="btn-whatsapp" href="https://wa.me/59169630059?text=Hola%20quiero%20hacer%20un%20pedido%20en%20Bidaya%20Steak%20House" target="_blank">
+            💬 Escribir por WhatsApp
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 BIDAYA STEAK HOUSE | La mejor carne de Santa Cruz 🥩</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
